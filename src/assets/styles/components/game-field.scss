@@ -1,0 +1,27 @@
+@use '../constants.scss' as *;
+
+.game-field {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.game-row {
+    display: flex;
+    flex-direction: row;
+}
+
+$cell-size: 1rem;
+
+.game-cell {
+    display: block;
+    background-color: gray;
+    width: $cell-size;
+    height: $cell-size;
+    border: 1px solid black;
+}
+
+.game-cell-alive {
+    background-color: green;
+
+}
