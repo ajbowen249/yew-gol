@@ -1,2 +1,17 @@
 @use './constants' as *;
 @use './components/main' as *;
+
+body {
+    background-color: $color-secondary;
+    color: $color-text;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: .5rem;
+    margin: .5rem;
+    color: $color-dark-text;
+    background-color: $color-primary;
+}

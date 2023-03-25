@@ -1,8 +1,8 @@
 use std::rc::Rc;
 use yew::prelude::*;
 
-pub const DEFAULT_WIDTH: u32 = 20;
-pub const DEFAULT_HEIGHT: u32 = 20;
+pub const DEFAULT_WIDTH: u32 = 100;
+pub const DEFAULT_HEIGHT: u32 = 100;
 
 #[derive(Debug, PartialEq, Eq, Clone)]
 pub struct GameContext {

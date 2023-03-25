@@ -3,7 +3,7 @@
 .game-field {
     display: flex;
     flex-direction: column;
-
+    cursor: pointer;
 }
 
 .game-row {
@@ -11,17 +11,16 @@
     flex-direction: row;
 }
 
-$cell-size: 1rem;
+$cell-size: .6rem;
 
 .game-cell {
     display: block;
-    background-color: gray;
+    background-color: $color-inactive;
     width: $cell-size;
     height: $cell-size;
-    border: 1px solid black;
+    border: .5px solid $color-highlight;
 }
 
 .game-cell-alive {
-    background-color: green;
-
+    background-color: $color-primary;
 }
