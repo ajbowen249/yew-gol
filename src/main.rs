@@ -1,4 +1,3 @@
-use std::rc::Rc;
 use yew_router::prelude::*;
 use yew::prelude::*;
 

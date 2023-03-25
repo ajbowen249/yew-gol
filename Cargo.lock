@@ -868,6 +868,7 @@ dependencies = [
 name = "yew-life"
 version = "0.1.0"
 dependencies = [
+ "gloo-timers",
  "wasm-bindgen",
  "web-sys",
  "yew",

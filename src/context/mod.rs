@@ -14,7 +14,7 @@ pub struct GameContext {
 pub enum ContextAction {
     SetSize((u32, u32)),
     SetCell((u32, u32, bool)),
-    Iterate(),
+    Iterate,
 }
 
 impl Reducible for GameContext {
@@ -32,7 +32,7 @@ impl Reducible for GameContext {
             ContextAction::SetCell((x, y, value)) => {
                 state.field[y as usize][x as usize] = value;
             },
-            ContextAction::Iterate() => {
+            ContextAction::Iterate => {
                 state.field = crate::game::iterate_field(&state.field);
             },
         }

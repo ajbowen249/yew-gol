@@ -25,7 +25,7 @@ pub fn ConfigPanel() -> Html {
         let context = context.clone();
 
         move |_| {
-            context.dispatch(ContextAction::Iterate());
+            context.dispatch(ContextAction::Iterate);
         }
     };
 
