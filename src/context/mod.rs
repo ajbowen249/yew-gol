@@ -1,23 +1,24 @@
 use std::rc::Rc;
 use yew::prelude::*;
 
-pub const DEFAULT_WIDTH: u32 = 100;
-pub const DEFAULT_HEIGHT: u32 = 100;
+pub const DEFAULT_WIDTH: usize = 100;
+pub const DEFAULT_HEIGHT: usize = 100;
 pub const DEFAULT_INTERVAL: u32 = 100;
 
 #[derive(Debug, PartialEq, Eq, Clone)]
 pub struct GameContext {
-    pub width: u32,
-    pub height: u32,
+    pub width: usize,
+    pub height: usize,
     pub interval: u32,
     pub field: Vec<Vec<bool>>,
 }
 
 pub enum ContextAction {
-    SetSize((u32, u32)),
+    SetSize((usize, usize)),
     SetCell((u32, u32, bool)),
     SetIterval(u32),
     Iterate,
+    OverridePattern(Vec<Vec<bool>>),
 }
 
 impl Reducible for GameContext {
@@ -40,6 +41,20 @@ impl Reducible for GameContext {
             },
             ContextAction::Iterate => {
                 state.field = crate::game::iterate_field(&state.field);
+            },
+            ContextAction::OverridePattern(value) => {
+                if value.len() > state.height as usize || value[0].len() > state.width {
+                    state.width = value[0].len();
+                    state.height = value.len();
+                }
+
+                state.field = crate::game::init_field(state.width, state.height);
+
+                for row in 0..value.len() {
+                    for col in 0..value[row].len() {
+                        state.field[row][col] = value[row][col];
+                    }
+                }
             },
         }
 

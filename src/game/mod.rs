@@ -1,5 +1,5 @@
-pub fn init_field(width: u32, height: u32) -> Vec<Vec<bool>> {
-    vec![vec![false; width as usize]; height as usize]
+pub fn init_field(width: usize, height: usize) -> Vec<Vec<bool>> {
+    vec![vec![false; width]; height]
 }
 
 pub fn iterate_field(field: &Vec<Vec<bool>>) -> Vec<Vec<bool>>{
@@ -8,7 +8,7 @@ pub fn iterate_field(field: &Vec<Vec<bool>>) -> Vec<Vec<bool>>{
     let width = field[0].len() as i32;
     let height = field.len() as i32;
 
-    let mut out_field = init_field(width as u32, height as u32);
+    let mut out_field = init_field(width as usize, height as usize);
 
     let safe_get = |x: i32, y: i32| {
         if x < 0 || y < 0 || x >= width || y >= height {

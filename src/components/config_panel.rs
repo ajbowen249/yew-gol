@@ -16,8 +16,8 @@ pub fn ConfigPanel() -> Html {
 
         move |_| {
             context.dispatch(ContextAction::SetSize((
-                width_input.parse::<u32>().unwrap(),
-                height_input.parse::<u32>().unwrap()
+                width_input.parse::<usize>().unwrap(),
+                height_input.parse::<usize>().unwrap()
             )))
         }
     };
