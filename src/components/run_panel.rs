@@ -1,6 +1,5 @@
 use yew::prelude::*;
 use gloo_timers::callback::Interval;
-use std::rc::Rc;
 use std::cell::RefCell;
 use crate::context::*;
 
@@ -17,8 +16,7 @@ pub struct Props {
 // Using a struct component to make the timer lifetime easier to deal with.
 
 pub struct RunPanel {
-    timer: Option<Interval>,
-    is_running: Rc<RefCell<bool>>,
+    timer: RefCell<Option<Interval>>,
 }
 
 impl Component for RunPanel {
@@ -27,8 +25,7 @@ impl Component for RunPanel {
 
     fn create(_ctx: &Context<Self>) -> Self {
         RunPanel {
-            timer: None,
-            is_running: Rc::new(RefCell::new(false)),
+            timer: RefCell::new(None),
         }
     }
 
@@ -47,23 +44,17 @@ impl Component for RunPanel {
     fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Msg::Run => {
-                match self.timer {
-                    Some(_) => {},
-                    None => {
-                        let is_running = self.is_running.clone();
-                        let context = ctx.props().context.clone();
-                        self.timer = Some(Interval::new(100, move || {
-                            if *is_running.borrow() {
-                                context.dispatch(ContextAction::Iterate);
-                            }
-                        }));
-                    },
-                };
-
-                *(self.is_running.borrow_mut()) = true;
+                let context = ctx.props().context.clone();
+                self.timer = RefCell::new(Some(Interval::new(100, move || {
+                    context.dispatch(ContextAction::Iterate);
+                })));
             },
             Msg::Stop => {
-                *(self.is_running.borrow_mut()) = false;
+                let old_timer = self.timer.replace(None);
+                match old_timer {
+                    Some(timer) => { timer.cancel(); },
+                    None => {},
+                };
             },
         };
 
