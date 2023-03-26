@@ -8,7 +8,7 @@ use web_sys::{EventTarget, HtmlInputElement};
  * Yoinked from the yew docs
  * https://yew.rs/docs/next/concepts/html/events
  */
-pub fn bind_on_input(state: &UseStateHandle<String>) -> Callback<InputEvent>{
+pub fn bind_on_input(state: &UseStateHandle<String>) -> Callback<InputEvent> {
     return {
         let state = state.clone();
 
@@ -22,6 +22,22 @@ pub fn bind_on_input(state: &UseStateHandle<String>) -> Callback<InputEvent>{
 
             if let Some(input) = input {
                 state.set(input.value());
+            }
+        })
+    };
+}
+
+pub fn bind_on_input_with_effect(state: &UseStateHandle<String>, callback: yew::Callback<String>) -> Callback<InputEvent> {
+    return {
+        let state = state.clone();
+
+        Callback::from(move |e: InputEvent| {
+            let target: Option<EventTarget> = e.target();
+            let input = target.and_then(|t| t.dyn_into::<HtmlInputElement>().ok());
+
+            if let Some(input) = input {
+                state.set(input.value());
+                callback.emit(input.value());
             }
         })
     };

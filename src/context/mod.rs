@@ -3,17 +3,20 @@ use yew::prelude::*;
 
 pub const DEFAULT_WIDTH: u32 = 100;
 pub const DEFAULT_HEIGHT: u32 = 100;
+pub const DEFAULT_INTERVAL: u32 = 100;
 
 #[derive(Debug, PartialEq, Eq, Clone)]
 pub struct GameContext {
     pub width: u32,
     pub height: u32,
+    pub interval: u32,
     pub field: Vec<Vec<bool>>,
 }
 
 pub enum ContextAction {
     SetSize((u32, u32)),
     SetCell((u32, u32, bool)),
+    SetIterval(u32),
     Iterate,
 }
 
@@ -31,6 +34,9 @@ impl Reducible for GameContext {
             },
             ContextAction::SetCell((x, y, value)) => {
                 state.field[y as usize][x as usize] = value;
+            },
+            ContextAction::SetIterval(interval) => {
+                state.interval = interval;
             },
             ContextAction::Iterate => {
                 state.field = crate::game::iterate_field(&state.field);
@@ -54,6 +60,7 @@ pub fn GameContextProvider(props: &GameContextProviderProps) -> Html {
     let context = use_reducer(|| GameContext {
         width: DEFAULT_WIDTH,
         height: DEFAULT_HEIGHT,
+        interval: DEFAULT_INTERVAL,
         field: crate::game::init_field(DEFAULT_WIDTH, DEFAULT_HEIGHT),
     });
 

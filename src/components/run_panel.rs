@@ -34,10 +34,10 @@ impl Component for RunPanel {
         let stop = ctx.link().callback(|_| Msg::Stop);
 
         html! {
-            <>
+            <div>
                 <button onclick={run}>{"Run"}</button>
                 <button onclick={stop}>{"Stop"}</button>
-            </>
+            </div>
         }
     }
 
@@ -45,7 +45,7 @@ impl Component for RunPanel {
         match msg {
             Msg::Run => {
                 let context = ctx.props().context.clone();
-                self.timer = RefCell::new(Some(Interval::new(100, move || {
+                self.timer = RefCell::new(Some(Interval::new(context.interval, move || {
                     context.dispatch(ContextAction::Iterate);
                 })));
             },
