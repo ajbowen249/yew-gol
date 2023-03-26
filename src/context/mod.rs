@@ -3,7 +3,7 @@ use yew::prelude::*;
 
 pub const DEFAULT_WIDTH: usize = 75;
 pub const DEFAULT_HEIGHT: usize = 75;
-pub const DEFAULT_INTERVAL: u32 = 100;
+pub const DEFAULT_INTERVAL: u32 = 20;
 
 #[derive(Debug, PartialEq, Eq, Clone)]
 pub struct GameContext {
