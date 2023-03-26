@@ -1,6 +1,6 @@
 # Conway's Game of Life, Written in Yew
 
-Title says all. It's Conway's Game of Life, weitten in [Yew](https://yew.rs/).
+Title says all. It's Conway's Game of Life, written in [Yew](https://yew.rs/).
 
 Thanks to GitHub Pages, it's playable [here!](https://ajbowen249.github.io/yew-gol/)
 
