@@ -1,8 +1,6 @@
 use yew::prelude::*;
 use web_sys::HtmlSelectElement;
-use crate::util::bind_on_input;
 use crate::context::*;
-use std::rc::Rc;
 
 #[function_component]
 pub fn PatternPanel() -> Html {
@@ -14,6 +12,23 @@ pub fn PatternPanel() -> Html {
                 vec![ false, false, true, ],
                 vec![ true, false, true, ],
                 vec![ false, true, true, ],
+            ],
+        ),
+        (
+            "Gosper Glider Gun",
+            "Younked from Wikipedia",
+            vec![
+                vec![ false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, ],
+                vec![ false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true , false, false, false, false, false, false, false, false, false, false, false, false, ],
+                vec![ false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true , false, true , false, false, false, false, false, false, false, false, false, false, false, false, ],
+                vec![ false, false, false, false, false, false, false, false, false, false, false, false, false, true , true , false, false, false, false, false, false, true , true , false, false, false, false, false, false, false, false, false, false, false, false, true , true , false, ],
+                vec![ false, false, false, false, false, false, false, false, false, false, false, false, true , false, false, false, true , false, false, false, false, true , true , false, false, false, false, false, false, false, false, false, false, false, false, true , true , false, ],
+                vec![ false, true , true , false, false, false, false, false, false, false, false, true , false, false, false, false, false, true , false, false, false, true , true , false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, ],
+                vec![ false, true , true , false, false, false, false, false, false, false, false, true , false, false, false, true , false, true , true , false, false, false, false, true , false, true , false, false, false, false, false, false, false, false, false, false, false, false, ],
+                vec![ false, false, false, false, false, false, false, false, false, false, false, true , false, false, false, false, false, true , false, false, false, false, false, false, false, true , false, false, false, false, false, false, false, false, false, false, false, false, ],
+                vec![ false, false, false, false, false, false, false, false, false, false, false, false, true , false, false, false, true , false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, ],
+                vec![ false, false, false, false, false, false, false, false, false, false, false, false, false, true , true , false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, ],
+                vec![ false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, ],
             ],
         ),
     ];
