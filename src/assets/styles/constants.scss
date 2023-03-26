@@ -1,6 +1,8 @@
-$color-primary: #017AFF;
-$color-secondary: #6C47FF;
-$color-highlight: #fff9e3;
+@use "sass:color";
+
+$color-primary: #5B8FB9;
+$color-secondary: #301E67;
+$color-highlight: #B6EADA;
 $color-text: #39C0C8;
-$color-inactive: #D0D0D0;
+$color-inactive: color.adjust($color-secondary, $lightness: -1%);
 $color-dark-text: #000000;

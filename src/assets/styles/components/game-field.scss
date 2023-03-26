@@ -1,3 +1,5 @@
+@use "sass:color";
+
 @use '../constants.scss' as *;
 
 .game-field {
@@ -11,14 +13,14 @@
     flex-direction: row;
 }
 
-$cell-size: .6rem;
+$cell-size: .8rem;
 
 .game-cell {
     display: block;
     background-color: $color-inactive;
     width: $cell-size;
     height: $cell-size;
-    border: .5px solid $color-highlight;
+    border: .5px solid color.adjust($color-inactive, $lightness: -1%);
 }
 
 .game-cell-alive {

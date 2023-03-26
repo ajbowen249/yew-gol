@@ -9,10 +9,12 @@ pub fn Game() -> Html {
     let context = use_context::<crate::context::GameContextHandle>().unwrap();
 
     html! {
-        <div>
-            <ConfigPanel />
-            <RunPanel {context} />
-            <PatternPanel />
+        <div class={classes!("game-main")}>
+            <div class={classes!("top-bar")}>
+                <div><ConfigPanel /></div>
+                <div><RunPanel {context} /></div>
+                <div><PatternPanel /></div>
+            </div>
             <GameField />
         </div>
     }

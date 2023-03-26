@@ -1,8 +1,8 @@
 use std::rc::Rc;
 use yew::prelude::*;
 
-pub const DEFAULT_WIDTH: usize = 100;
-pub const DEFAULT_HEIGHT: usize = 100;
+pub const DEFAULT_WIDTH: usize = 75;
+pub const DEFAULT_HEIGHT: usize = 75;
 pub const DEFAULT_INTERVAL: u32 = 100;
 
 #[derive(Debug, PartialEq, Eq, Clone)]
